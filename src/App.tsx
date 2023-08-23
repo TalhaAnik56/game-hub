@@ -9,7 +9,12 @@ const App = () => {
       <Grid templateAreas={{
         base:`"nav" "main"`,
         lg:`"nav nav" "aside main"`
-      }}>
+      }}
+      templateColumns={{
+        base:'1fr',
+        lg:'200px 1fr'
+      }}
+      >
         <GridItem area="nav">
           <NavBar/>
         </GridItem>
@@ -17,7 +22,7 @@ const App = () => {
 
 
         <Show above="lg">
-        <GridItem area="aside">
+        <GridItem area="aside" paddingX={6}>
           <GenreList/>
         </GridItem>
         </Show>
@@ -25,7 +30,7 @@ const App = () => {
 
         <GridItem area="main">
           <GameGrid/>
-        </GridItem>
+        </GridItem> 
       </Grid>
     </>
   );
