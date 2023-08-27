@@ -6,6 +6,7 @@ import {
   SkeletonText,
   Stack,
 } from "@chakra-ui/react";
+import apiClient from "../services.ts/api-client";
 
 
 const GenreSkeletonList = () => {
@@ -18,3 +19,4 @@ const GenreSkeletonList = () => {
 };
 
 export default GenreSkeletonList;
+
