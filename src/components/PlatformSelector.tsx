@@ -1,4 +1,4 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import { Button, Menu, MenuButton, MenuItem, MenuList, Spinner } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import usePlatforms from "../hooks/usePlatforms";
 
@@ -8,8 +8,8 @@ const PlatformSelector = () => {
 
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        Platforms
+      <MenuButton colorScheme="blue" as={Button} rightIcon={<BsChevronDown />}>
+        {isLoading?<Spinner></Spinner>:'Platforms'}
       </MenuButton>
       <MenuList>
         {data.map((platform) => (
