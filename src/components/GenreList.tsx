@@ -5,19 +5,17 @@ import {
   List,
   ListItem,
   SimpleGrid,
-  Spinner,
-  Text,
 } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services.ts/image-url";
 import GenreSkeletonList from "./GenreSkeletonList";
 
-interface Props{
-  onSelectGenre:(genre:Genre)=>void
+interface Props {
+  onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-
-const GenreList = ({onSelectGenre}:Props) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
   const skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -39,7 +37,14 @@ const GenreList = ({onSelectGenre}:Props) => {
                 borderRadius={5}
                 src={getCroppedImageUrl(genre.image_background)}
               ></Image>
-              <Button onClick={()=>onSelectGenre(genre)} variant='link'>{genre.name}</Button>
+              <Button
+                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                fontSize={genre.id === selectedGenre?.id ? "lg" : "md"}
+                onClick={() => onSelectGenre(genre)}
+                variant="link"
+              >
+                {genre.name}
+              </Button>
             </HStack>
           </ListItem>
         ))}
