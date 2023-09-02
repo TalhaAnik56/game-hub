@@ -6,12 +6,15 @@ interface Props {
 }
 
 const GameHeading = ({ gameQuery }: Props) => {
-  const heading = `${gameQuery.platform?.name || ""} ${
-    gameQuery.genre?.name || ""
-  } Games`;
+  const platformName = gameQuery.platform?.name || null;
+  const genreName = gameQuery.genre?.name || null;
+
+  const heading = `${platformName ? platformName + " " : ""}${
+    genreName ? genreName + " " : ""
+  }Games`;
 
   return (
-    <Heading fontSize={"5xl"} paddingBottom={3}>
+    <Heading fontSize={"5xl"} paddingBottom={4}>
       {heading}
     </Heading>
   );

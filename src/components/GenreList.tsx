@@ -1,6 +1,7 @@
 import {
   Button,
   HStack,
+  Heading,
   Image,
   List,
   ListItem,
@@ -23,6 +24,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 
   return (
     <>
+      <Heading as={'h1'} fontSize={'3xl'} paddingBottom={3}>Genres:</Heading>
       <SimpleGrid columns={1}>
         {isLoading &&
           skeleton.map((skeleton) => <GenreSkeletonList key={skeleton} />)}
@@ -34,12 +36,15 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
             <HStack>
               <Image
                 boxSize="42px"
+                objectFit={"cover"}
                 borderRadius={5}
                 src={getCroppedImageUrl(genre.image_background)}
               ></Image>
               <Button
+                textAlign={"left"}
+                whiteSpace={"normal"}
                 fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
-                fontSize={genre.id === selectedGenre?.id ? "lg" : "md"}
+                fontSize={genre.id === selectedGenre?.id ? "x-large" : "lg"}
                 onClick={() => onSelectGenre(genre)}
                 variant="link"
               >
