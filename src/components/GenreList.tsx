@@ -31,7 +31,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
       </SimpleGrid>
 
       <List>
-        {data.map((genre) => (
+        {data?.map((genre) => (
           <ListItem paddingY="7px" key={genre.id}>
             <HStack>
               <Image
