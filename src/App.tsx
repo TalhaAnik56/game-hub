@@ -26,7 +26,7 @@ export interface GameQuery {
 
 const App = () => {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-  // {} as GameQuery means {genre:null,platform:null,sortOrder:null}
+  // {} as GameQuery means {genre:null,platform:null,sortOrder:null,searchText:null}
 
   return (
     <>
