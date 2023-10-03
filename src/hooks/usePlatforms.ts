@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import platforms from "../data/platforms";
-import apiClient, { FetchResponse } from "../services.ts/api-client";
+import APIClient from "../services.ts/api-client";
 
 
 export interface Platform {
@@ -9,13 +9,12 @@ export interface Platform {
   slug: string;
 }
 
+const apiClient=new APIClient<Platform>("/platforms/lists/parents")
+
 const usePlatforms = () => {
   const query = useQuery<Platform[], Error>({
     queryKey: ["platforms"],
-    queryFn: () =>
-      apiClient
-        .get<FetchResponse<Platform>>("/platforms/lists/parents")
-        .then((res) => res.data.results),
+    queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, //24 hours
     initialData: platforms,
   });
