@@ -16,16 +16,8 @@ export interface Game {
 const apiClient=new APIClient<Game>("/games")
 
 const useGames = (gameQuery: GameQuery) => {
-  const modifiedGameQuery={
-    genres:gameQuery.genre?.name,
-    parent_platforms: gameQuery.platform?.name,
-    ordering: gameQuery.sortOrder,
-    search: gameQuery.searchText,
-  }
-
-  
   const query = useInfiniteQuery<FetchResponse<Game>,Error>({
-    queryKey: ["games",modifiedGameQuery],
+    queryKey: ["games",gameQuery],
     queryFn:({pageParam=1})=>apiClient.getAll({
       params: {
         page:pageParam,
@@ -41,7 +33,7 @@ const useGames = (gameQuery: GameQuery) => {
       return lastPage.next? allPages.length+1:undefined
     },
 
-    staleTime: 30 * 1000, //30 seconds
+    staleTime: 24*60*60*1000, //24 hours
     keepPreviousData:true,
   });
 
