@@ -1,7 +1,8 @@
 import axios,{AxiosRequestConfig, CanceledError} from "axios";
 
-interface FetchResponse<T>{
+export interface FetchResponse<T>{
     count:number;
+    next:string|null;
     results:T[]
 }
 
@@ -19,7 +20,7 @@ class APIClient<T>{
     }
 
     getAll=(config:AxiosRequestConfig)=>{
-        return axiosInstance.get<FetchResponse<T>>(this.endpoint,config).then(res=>res.data.results)
+        return axiosInstance.get<FetchResponse<T>>(this.endpoint,config).then(res=>res.data)
     }
 
 }
