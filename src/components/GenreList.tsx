@@ -13,7 +13,7 @@ import GenreSkeletonList from "./GenreSkeletonList";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenreId?:number;
+  selectedGenreId?: number;
 }
 
 const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
@@ -24,7 +24,9 @@ const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
 
   return (
     <>
-      <Heading as={'h1'} fontSize={'3xl'} paddingBottom={3}>Genres:</Heading>
+      <Heading as={"h1"} fontSize={"3xl"} paddingBottom={3}>
+        Genres:
+      </Heading>
       <SimpleGrid columns={1}>
         {isLoading &&
           skeleton.map((skeleton) => <GenreSkeletonList key={skeleton} />)}
