@@ -11,10 +11,10 @@ const GameHeading = ({ gameQuery }: Props) => {
   const { data: genres } = useGenres();
   const { data: platforms } = usePlatforms();
 
-  const selectedPlatform = platforms.results.find(
+  const selectedPlatform = platforms?.results.find(
     (platform) => platform.id === gameQuery?.platformId
   );
-  const selectedGenre = genres.results.find(
+  const selectedGenre = genres?.results.find(
     (genre) => genre.id === gameQuery?.genreId
   );
 
