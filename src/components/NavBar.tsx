@@ -3,15 +3,12 @@ import logo from '../assets/mogo.webp'
 import ColorModeSwitch from "./ColorModeSwitch"
 import SearchInput from "./SearchInput"
 
-interface Props{
-  onSearch:(searchText:string)=>void
-}
 
-const NavBar = ({onSearch}:Props) => {
+const NavBar = () => {
   return (
     <HStack padding="20px">
         <Image src={logo} boxSize='80px'/>
-        <SearchInput onSearch={onSearch}/>
+        <SearchInput/>
         <ColorModeSwitch/>
     </HStack>
   )
