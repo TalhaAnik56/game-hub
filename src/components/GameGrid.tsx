@@ -24,7 +24,7 @@ const GameGrid = () => {
         dataLength={fetchedGamesCount}
         hasMore={!!hasNextPage} // !! makes any undefined value to boolean false
         next={() => fetchNextPage()}
-        loader={<Box display={"flex"} justifyContent={"center"}><Text>Aktu time de bhai..</Text></Box>}
+        loader={<Box display={"flex"} justifyContent={"center"}><Text>Loading...</Text></Box>}
       >
         <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={8}>
           {isLoading &&
