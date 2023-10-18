@@ -1,28 +1,28 @@
-import { Box, Button, Heading, Spinner, Text } from "@chakra-ui/react";
+import { Box, Heading, Spinner } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import useGameDetails from "../hooks/useGameDetails";
-import { useState } from "react";
 import ExpandableText from "../components/ExpandableText";
+import GameAttributes from "../components/GameAttributes";
+import useGameDetails from "../hooks/useGameDetails";
 
 const GameDetailsPage = () => {
   const { slug } = useParams();
   const { data: game, isLoading, error } = useGameDetails(slug!);
   //slug! it means slug will never be null
 
-  if (error) {
+  if (isLoading) {
+    return <Spinner></Spinner>;
+  }
+
+  if (error || !game) {
     throw error;
   }
 
   return (
-    <>
-      {isLoading && <Spinner />}
-      <Box>
-        <Heading>{game?.name}</Heading>
-        <ExpandableText>
-          {game?.description_raw!}
-        </ExpandableText>
-      </Box>
-    </>
+    <Box>
+      <Heading>{game.name}</Heading>
+      <ExpandableText>{game.description_raw!}</ExpandableText>
+      <GameAttributes game={game}/>
+    </Box>
   );
 };
 
