@@ -13,8 +13,8 @@ const NavBar = () => {
         <Image
           src={logo}
           objectFit={"cover"}
-          height={{base:"50px",lg:"80px"}}
-          width={{base:"100px",lg:"80px"}}
+          height={{base:"60px",lg:"80px"}}
+          width={{base:"140px",lg:"80px"}}
           //boxSize={{base:"100px",md:"80px"}}
           onClick={() => setGameQuery()}
         />
